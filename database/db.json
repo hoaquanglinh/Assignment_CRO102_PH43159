@@ -1,0 +1,71 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "username": "admin",
+            "password": "admin",
+            "hoten": "Hòa Quang Linh",
+            "email": "linhhqph43159@fpt.edu.vn",
+            "diachi": "Nam Từ Liêm, Hà Nội",
+            "sdt": "0348745345"
+        }
+    ],
+    "products": [
+        {
+            "id": "1",
+            "ten": "Cay phong la do",
+            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
+            "gia": "200000",
+            "trangthai": true,
+            "phanhloai": "Cây cảnh",
+            "kichthuoc": "70x70"
+        },
+        {
+            "id": "2",
+            "ten": "Cay phong la do",
+            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
+            "gia": "200000",
+            "trangthai": true,
+            "phanhloai": "Cây cảnh",
+            "kichthuoc": "70x70"
+        }
+    ],
+    "carts": [
+        {
+            "id": "1",
+            "ten": "Cay phong la dooooooooooooooooooooooooooooooooooooooooooooo",
+            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
+            "gia": "200000",
+            "soluong": "1",
+            "trangthai": true
+        },
+        {
+            "id": "2",
+            "ten": "Cay phong la do",
+            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
+            "gia": "200000",
+            "soluong": "1",
+            "trangthai": false
+        }
+    ],
+    "orders": [
+        {
+            "id": "1",
+            "ten": "Cay phong la do",
+            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
+            "gia": "200000",
+            "soluong": "1",
+            "trangthai": 1,
+            "thoigian": "19/10/2024"
+        },
+        {
+            "id": "2",
+            "ten": "Cay phong la do",
+            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
+            "gia": "200000",
+            "soluong": "1",
+            "trangthai": 2,
+            "thoigian": "19/10/2024"
+        }
+    ]
+}
