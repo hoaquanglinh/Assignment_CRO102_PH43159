@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
-import { Switch, TextInput, Image, StyleSheet, View, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { Switch, TextInput, Image, StyleSheet, View, StatusBar, Text, TouchableOpacity, Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { saveUserData } from './Redux/actions';
 
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleLogin = () => {
+    doLogin();
+
+    const userData = {
+      username: username
+    };
+    dispatch(saveUserData(userData)); 
+  };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -12,6 +28,48 @@ const Login = (props) => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+
+  const lay_ds = async () => {
+    let url_check_login = 'http://10.0.2.2:3000/users?username=' + username
+    console.log(url_check_login);
+    try{
+      const res = await fetch(url_check_login);
+      const data = await res.json();
+      
+      if(data.length != 1){
+        alert("Sai tên tài khoản hoặc mật khẩu")
+        return
+      }else{
+        let objU = data[0];
+        if(objU.password != password){
+          alert("Sai tên tài khoản hoặc mật khẩu")
+          return
+        }else{
+          try{
+            props.navigation.navigate('Tabnavigator')
+          }catch(e){
+            console.log(e);
+          }
+        }
+      }
+    }catch(error){
+      console.log(error);
+    }
+  }
+  
+  const doLogin = () => {
+    if(username.length == 0){
+      Alert.alert("Chưa nhập username")
+      return
+    }
+    if(password.length == 0){
+      Alert.alert("Chưa nhập password")
+      return
+    }
+
+    lay_ds();
+  
+  }
 
   return (
     <View style={styles.container}>
@@ -24,8 +82,9 @@ const Login = (props) => {
 
         <TextInput
           style={[styles.input, { marginTop: 30 }]}
-          placeholder='Nhập email hoặc số điện thoại'
-          placeholderTextColor={"#606060"} />
+          placeholder='Tài khoản'
+          placeholderTextColor={"#606060"} 
+          onChangeText={txt => setUsername(txt)}/>
 
         <View style={[styles.input, { flexDirection: 'row', padding: 0 }]}>
           <TextInput
@@ -33,7 +92,8 @@ const Login = (props) => {
             style={{ padding: 15 }}
             // style={styles.input}
             placeholderTextColor={"#606060"}
-            secureTextEntry={!showPassword} />
+            secureTextEntry={!showPassword} 
+            onChangeText={txt => setPassword(txt)}/>
           <TouchableOpacity
             onPress={toggleShowPassword}
             style={{ position: 'absolute', right: 40, top: 45 }}
@@ -57,7 +117,7 @@ const Login = (props) => {
 
         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
           <TouchableOpacity
-            onPress={() => props.navigation.navigate('Tabnavigator')}
+            onPress={handleLogin}
             style={[styles.button, { marginTop: 25 }]}>
             <Text style={{ color: 'white', fontSize: 20, fontWeight: "bold" }}>Đăng nhập</Text>
           </TouchableOpacity>

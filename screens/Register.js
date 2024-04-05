@@ -1,7 +1,47 @@
 import { Switch, TextInput, Image, StyleSheet, View, StatusBar, Text, TouchableOpacity } from 'react-native';
-import React from 'react'
+import React, { useState } from 'react'
 
 const Register = (props) => {
+  const [hoTen, setHoTen] = useState('')
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  const saveTaiKhoan = () => {
+    let objTK = {
+      hoten: hoTen,
+      email: email,
+      username: username,
+      password: password
+    };
+
+    if (hoTen.length == 0 || email.length == 0 || username.length == 0 || password.length == 0) {
+      Alert.alert("Vui lòng nhập đầy đủ thông tin")
+      return
+    }
+
+    let url_api = "http://10.0.2.2:3000/users"
+
+    fetch(url_api, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(objTK)
+    })
+      .then((res) => {
+        if (res.status == 201)
+          console.log("Thêm thành công")
+        props.navigation.navigate('Login')
+      })
+      .catch((ex) => {
+        console.log(ex);
+      });
+
+    navigation.navigate('Login')
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
@@ -20,29 +60,34 @@ const Register = (props) => {
 
         <TextInput
           style={[styles.input, { marginTop: 30 }]}
+          onChangeText={txt => setHoTen(txt)}
           placeholder='Họ tên'
           placeholderTextColor={"#606060"} />
 
         <TextInput
           style={styles.input}
           placeholder='Email'
+          onChangeText={txt => setEmail(txt)}
           placeholderTextColor={"#606060"} />
 
         <TextInput
           style={styles.input}
-          placeholder='Số điện thoại'
+          onChangeText={txt => setUsername(txt)}
+          placeholder='Tài khoản'
           placeholderTextColor={"#606060"} />
 
         <View style={[styles.input, { flexDirection: 'row', padding: 0 }]}>
           <TextInput
             placeholder='Mật khẩu'
+            onChangeText={txt => setPassword(txt)}
             style={{ padding: 15 }}
-            // style={styles.input}
             placeholderTextColor={"#606060"} />
         </View>
 
         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-          <TouchableOpacity style={[styles.button, { marginTop: 25 }]}>
+          <TouchableOpacity 
+          onPress={() => saveTaiKhoan()}
+          style={[styles.button, { marginTop: 25 }]}>
             <Text style={{ color: 'white', fontSize: 20, fontWeight: "bold" }}>Đăng nhập</Text>
           </TouchableOpacity>
         </View>
@@ -64,7 +109,8 @@ const Register = (props) => {
 
         <View style={{ flexDirection: 'row', marginTop: 25 }}>
           <Text style={{ fontSize: 17, color: 'black', marginRight: 5 }}>Tôi đã có tài khoản.</Text>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('Login')}>
             <Text style={{ fontSize: 17, color: 'green' }}>Đăng nhập</Text>
           </TouchableOpacity>
         </View>
@@ -86,7 +132,6 @@ const styles = StyleSheet.create({
     marginTop: -25,
     width: '100%',
     height: '24%',
-    // position: 'absolute',
   },
   section: {
     alignItems: 'center'

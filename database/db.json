@@ -1,71 +1,94 @@
 {
-    "users": [
+  "users": [
+    {
+      "username": "linh",
+      "password": "123",
+      "hoten": "Nguyen Quang Linh",
+      "email": "linhhqph43159@fpt.edu.vn",
+      "diachi": "Nam Từ Liêm, Hà Nội",
+      "sdt": "0348745345879",
+      "id": "1"
+    },
+    {
+      "username": "phuchq",
+      "password": "123",
+      "hoten": "Hoa Quang Phuc",
+      "email": "phuc@gmail.com",
+      "diachi": "thai binh",
+      "sdt": "132452345",
+      "id": "a228"
+    },
+    {
+      "username": "linhhq",
+      "password": "123",
+      "hoten": "hoa quang linh",
+      "email": "linh@gmail.com.vn",
+      "diachi": "thai binh",
+      "sdt": "02345125",
+      "id": "d20b"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "ten": "Cay phong",
+      "anh": "https://cdn.tgdd.vn/Files/2022/07/09/1446097/top-20-cay-canh-bonsai-dep-nhat-viet-nam-cuc-hop-phong-thuy-202207091054496146.jpg",
+      "gia": "200000",
+      "trangthai": true,
+      "phanloai": "Cây cảnh",
+      "kichthuoc": "70x70"
+    },
+    {
+      "id": "2",
+      "ten": "Cay da",
+      "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
+      "gia": "40000",
+      "trangthai": false,
+      "phanloai": "Cây cảnh",
+      "kichthuoc": "70x70"
+    }
+  ],
+  "carts": [],
+  "orders": [
+    {
+      "id": "ff9a",
+      "thoigian": "2024-04-05 18:44:56",
+      "trangthai": 1,
+      "ptttt": "Thanh toán khi nhận hàng",
+      "thongtin": {
+        "hoten": "hoa quang lin",
+        "email": "linh@gmail.com.vn",
+        "diachi": "vinh phuc",
+        "sdt": "02345125"
+      },
+      "productOrder": [
         {
+          "soluong": 2,
+          "itemCart": {
             "id": "1",
-            "username": "admin",
-            "password": "admin",
-            "hoten": "Hòa Quang Linh",
-            "email": "linhhqph43159@fpt.edu.vn",
-            "diachi": "Nam Từ Liêm, Hà Nội",
-            "sdt": "0348745345"
-        }
-    ],
-    "products": [
-        {
-            "id": "1",
-            "ten": "Cay phong la do",
-            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
+            "ten": "Cay phong",
+            "anh": "https://cdn.tgdd.vn/Files/2022/07/09/1446097/top-20-cay-canh-bonsai-dep-nhat-viet-nam-cuc-hop-phong-thuy-202207091054496146.jpg",
             "gia": "200000",
             "trangthai": true,
-            "phanhloai": "Cây cảnh",
+            "phanloai": "Cây cảnh",
             "kichthuoc": "70x70"
+          },
+          "id": "096d"
         },
         {
+          "soluong": 4,
+          "itemCart": {
             "id": "2",
-            "ten": "Cay phong la do",
+            "ten": "Cay da",
             "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
-            "gia": "200000",
-            "trangthai": true,
-            "phanhloai": "Cây cảnh",
+            "gia": "40000",
+            "trangthai": false,
+            "phanloai": "Cây cảnh",
             "kichthuoc": "70x70"
+          },
+          "id": "a9ae"
         }
-    ],
-    "carts": [
-        {
-            "id": "1",
-            "ten": "Cay phong la dooooooooooooooooooooooooooooooooooooooooooooo",
-            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
-            "gia": "200000",
-            "soluong": "1",
-            "trangthai": true
-        },
-        {
-            "id": "2",
-            "ten": "Cay phong la do",
-            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
-            "gia": "200000",
-            "soluong": "1",
-            "trangthai": false
-        }
-    ],
-    "orders": [
-        {
-            "id": "1",
-            "ten": "Cay phong la do",
-            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
-            "gia": "200000",
-            "soluong": "1",
-            "trangthai": 1,
-            "thoigian": "19/10/2024"
-        },
-        {
-            "id": "2",
-            "ten": "Cay phong la do",
-            "anh": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Trident_Maple_bonsai_52%2C_October_10%2C_2008.jpg",
-            "gia": "200000",
-            "soluong": "1",
-            "trangthai": 2,
-            "thoigian": "19/10/2024"
-        }
-    ]
+      ]
+    }
+  ]
 }

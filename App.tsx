@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import React from 'react'
+import { Provider } from 'react-redux';
+import store from './screens/Redux/store';
 
 import Login from './screens/Login'
 import Wellcome from './screens/Wellcome';
@@ -19,7 +21,8 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <Provider store={store}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View>
         <StatusBar backgroundColor={'white'} />
       </View>
@@ -39,6 +42,7 @@ const App = () => {
       </NavigationContainer>
 
     </View>
+    </Provider>
   )
 }
 

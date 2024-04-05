@@ -37,26 +37,26 @@ const LichSuDonHang = (props) => {
 
   const historyView = ({ item }) => (
     <View style={{ marginTop: 10 }}>
-      <View style={{ backgroundColor: 'white', height: 140, marginTop: 7, flexDirection: 'row' }}>
-        <View style={{ flex: 1.8 }}>
-          <Image style={{ width: '100%', height: '100%' }} source={{ uri: item.anh }} />
-        </View>
-        <View style={{ flex: 2.5, marginLeft: 20, marginTop: 5 }}>
-          <View style={{ height: 30, marginTop: 5 }}>
-            <Text style={{ color: '#343434', fontSize: 23, fontWeight: 'bold' }}>{item.ten}</Text>
-          </View>
-          <View>
-            <Text style={{ fontSize: 17, marginTop: 5, marginBottom: 3 }}>{item.thoigian}</Text>
-          </View>
-          <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Text style={{ color: 'red', fontSize: 22, fontWeight: 'bold' }}>{item.gia} đ</Text>
-            <Text style={{ color: '#343434', fontSize: 20, marginRight: 10 }}>x{item.soluong}</Text>
-          </View>
-
-          <Text style={{ fontSize: 17, marginTop: 5 }}>Trạng thái: {trangThai(item.trangthai)}</Text>
-
-        </View>
+      <View style={{ width: '100%', borderBottomColor: '#444444', borderBottomWidth: 1 }}>
+        <Text style={{ color: '#343434', fontSize: 18 }}>{item.thoigian}</Text>
       </View>
+      {item.productOrder.map((product) => (
+        <View key={product.id} style={{ backgroundColor: 'white', height: 140, marginTop: 7, flexDirection: 'row' }}>
+          <View style={{ flex: 1.8 }}>
+            <Image style={{ width: '100%', height: '100%' }} source={{ uri: product.itemCart.anh }} />
+          </View>
+          <View style={{ flex: 2.5, marginLeft: 20, marginTop: 5 }}>
+            <View style={{ height: 60, marginTop: 5 }}>
+              <Text style={{ color: '#343434', fontSize: 23, fontWeight: 'bold' }}>{product.itemCart.ten}</Text>
+            </View>
+            <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
+              <Text style={{ color: 'red', fontSize: 22, fontWeight: 'bold' }}>{product.itemCart.gia * product.soluong} đ</Text>
+              <Text style={{ color: '#343434', fontSize: 20, marginRight: 10 }}>x{product.soluong}</Text>
+            </View>
+            <Text style={{ fontSize: 17, marginTop: 5 }}>Trạng thái: {trangThai(item.trangthai)}</Text>
+          </View>
+        </View>
+      ))}
     </View>
   )
 

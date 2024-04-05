@@ -7,6 +7,7 @@ var linkapi = 'http://10.0.2.2:3000/products';
 const Home = (props) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState('')
 
   const danhMuc = [
     { id: 1, name: 'Tất cả' },
@@ -16,9 +17,8 @@ const Home = (props) => {
     { id: 5, name: 'Khác' },
   ];
 
-  const handleCategoryPress = (item) => {
+  const handleCategoryPress = (item) => {n   
     setSelectedCategory(item.id);
-    console.log(`Selected category: ${item.name}`);
   };
 
   const renderCategoryItem = ({ item }) => (
@@ -57,7 +57,7 @@ const Home = (props) => {
   const renderItem = ({ item }) => (
     <View style={styles.sanPham}>
       <TouchableOpacity
-        onPress={() => props.navigation.navigate('ChiTietSanPham')}>
+        onPress={() => props.navigation.navigate('ChiTietSanPham', { itemChiTiet: item })}>
         <View style={{ padding: 5 }}>
           <Image source={{ uri: item.anh }} style={{ width: '100%', height: '62%', borderRadius: 0 }} />
           <View style={{ padding: 10, justifyContent: 'space-between' }}>
@@ -85,6 +85,7 @@ const Home = (props) => {
             <Icon name="search" size={27} color="black" />
           </View>
           <TextInput
+            onChangeText={(txt) => setSearch(txt)}
             style={styles.searchInput}
             placeholder="Tìm kiếm sản phẩm"
           />
@@ -101,13 +102,21 @@ const Home = (props) => {
         />
       </View>
       <View style={{ flex: 6 }}>
-        <FlatList
-          style={{ marginLeft: 20, marginBottom: 10 }}
-          data={products}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          numColumns={2}
-        />
+        {search == '' ?
+          <FlatList
+            style={{ marginLeft: 20, marginBottom: 10 }}
+            data={products}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            numColumns={2}
+          /> :
+          <FlatList
+            style={{ marginLeft: 20, marginBottom: 10 }}
+            data={products.filter( item => item.ten.toLowerCase().includes(search.toLocaleLowerCase()))}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            numColumns={2}
+          />}
       </View>
     </View>
   )
